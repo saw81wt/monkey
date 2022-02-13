@@ -94,7 +94,6 @@ func evalIntegerInfixExpression(operator string, left object.Object, right objec
 	leftVal := left.(*object.Integer).Value
 	rightVal := right.(*object.Integer).Value
 
-
 	switch operator {
 	case "+":
 		return &object.Integer{Value: leftVal + rightVal}
@@ -104,6 +103,14 @@ func evalIntegerInfixExpression(operator string, left object.Object, right objec
 		return &object.Integer{Value: leftVal * rightVal}
 	case "/":
 		return &object.Integer{Value: leftVal / rightVal}
+	case "<":
+		return &object.Boolean{Value: leftVal < rightVal}
+	case ">":
+		return &object.Boolean{Value: leftVal > rightVal}
+	case "==":
+		return &object.Boolean{Value: leftVal == rightVal}
+	case "!=":
+		return &object.Boolean{Value: leftVal != rightVal}
 	default:
 		return NULL
 	}
